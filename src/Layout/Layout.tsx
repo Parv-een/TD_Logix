@@ -1,5 +1,5 @@
 import { Nav, Navbar } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { IoLogOutOutline } from "react-icons/io5";
 
 export default function Layout() {
   return (
@@ -8,24 +8,26 @@ export default function Layout() {
         <Navbar.Brand href="#home">
           <img
             src="./src/assets/road-truckicon.jpg"
-            width="50"
-            height="50"
+            width="30"
+            height="30"
             className="d-inline-block align-top"
             alt="Road-Truck-Icon"
           />{" "}
-          TD Logix
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink to="/home">Home</NavLink>
-            <NavLink to="/trucks">Vehicle Catalogue</NavLink>
-            <NavLink to="/driver">Crew Members</NavLink>
-            <NavLink to="/shipment">Shipments</NavLink>
+            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/trucks">Vehicle Catalogue</Nav.Link>
+            <Nav.Link href="/driver">Crew Members</Nav.Link>
+            <Nav.Link href="/shipment">Shipments</Nav.Link>
           </Nav>
           <Nav>
-            <NavLink to="/login">Logout</NavLink>
+            <Nav.Link href="/login">
+              <IoLogOutOutline />
+              Logout
+            </Nav.Link>
             <Nav.Link eventKey={2} href="#profile">
               Profile
             </Nav.Link>
