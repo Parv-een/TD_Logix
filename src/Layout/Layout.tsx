@@ -5,7 +5,7 @@ export default function Layout() {
   return (
     <>
       <Navbar data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
-        <Navbar.Brand to="#home">
+        <Navbar.Brand href="#home">
           <img
             src="./src/assets/road-truckicon.jpg"
             width="50"
@@ -20,15 +20,15 @@ export default function Layout() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavLink to="/home">Home</NavLink>
-            <NavLink to="/trucks">Trucks Inventory</NavLink>
+            <NavLink to="/trucks">Vehicle Catalogue</NavLink>
             <NavLink to="/driver">Crew Members</NavLink>
             <NavLink to="/shipment">Shipments</NavLink>
           </Nav>
           <Nav>
             <NavLink to="/login">Logout</NavLink>
-            <NavLink eventKey={2} to="#profile">
+            <Nav.Link eventKey={2} href="#profile">
               Profile
-            </NavLink>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
