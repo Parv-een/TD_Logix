@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Address from "../../models/Address";
-import { Col, Container, Form, FormLabel, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, FormLabel, Row } from "react-bootstrap";
 
 export default function Driver() {
   const [firstName, setFirstName] = useState("");
@@ -184,6 +184,7 @@ export default function Driver() {
             ></Form.Control>
           </Col>
         </Row>
+        <Button type="submit"> Add to the List</Button>
       </Form>
     </Container>
   );

@@ -8,11 +8,13 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 
 import Layout from "../Layout/Layout";
 import Driver from "../Pages/DriversList/Driver";
+import VehicleList from "../Pages/Vehicle/VehicleList";
 
 const routes = createRoutesFromElements(
   <>
     <Route path="layout" element={<Layout />}></Route>
     <Route path="driver" element={<Driver />}></Route>
+    <Route path="trucks" element={<VehicleList />}></Route>
     <Route path="home" element={<HomePage />}></Route>
 
     <Route path="login" element={<LoginPage />}></Route>
