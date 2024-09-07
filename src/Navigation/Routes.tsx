@@ -11,7 +11,7 @@ import Layout from "../Layout/Layout";
 import VehicleList from "../Pages/Vehicle/VehicleList";
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import DriverMainPage from "../Pages/DriversList/DriverMainPage";
-import AddDriver from "../Components/AddDriver";
+import AddDriver from "../Pages/DriversList/AddDriver";
 
 const routes = createRoutesFromElements(
   <>
