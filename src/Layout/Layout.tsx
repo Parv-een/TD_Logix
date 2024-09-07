@@ -1,9 +1,10 @@
 import { Nav, Navbar } from "react-bootstrap";
 import { IoLogOutOutline } from "react-icons/io5";
+import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <>
+    <div>
       <Navbar data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
         <Navbar.Brand href="#home">
           <img
@@ -34,6 +35,7 @@ export default function Layout() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </>
+      <Outlet />
+    </div>
   );
 }

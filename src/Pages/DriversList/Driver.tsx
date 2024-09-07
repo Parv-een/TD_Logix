@@ -10,14 +10,27 @@ export default function Driver() {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isValid, setIsValid] = useState(false);
   const [address, setAddress] = useState<Address>({
     streetName: " ",
-    streetNumber: 0,
+    streetNumber: "",
     city: "",
     state: "",
     country: "",
     zip: "",
   });
+
+  const onHandlePhoneNumber = (e: { target: { value: string } }) => {
+    const phoneNumber = e.target.value;
+    const phoneNumberRegex = /^\d{10}$/;
+    if (phoneNumberRegex.test(phoneNumber)) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+    console.log(e.target.value);
+    setPhoneNumber(phoneNumber);
+  };
 
   return (
     <Container>
@@ -27,7 +40,7 @@ export default function Driver() {
           <Col>
             <FormLabel> Unique ID </FormLabel>
             <Form.Control
-              type="number"
+              type="text"
               required
               title="id"
               value={id}
@@ -35,16 +48,20 @@ export default function Driver() {
             ></Form.Control>
           </Col>
           <Col>
-            <FormLabel> Contact Info</FormLabel>
-            <Form.Control
-              type="number"
-              required
-              title="Phone Number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            ></Form.Control>
+            <div>
+              <FormLabel> Contact Info</FormLabel>
+              <Form.Control
+                type="tel"
+                required
+                title="Phone Number"
+                value={phoneNumber}
+                onChange={onHandlePhoneNumber}
+              ></Form.Control>
+              {isValid ? "" : <p>Phone Number must be exactly 10 digits</p>}
+            </div>
           </Col>
         </Row>
+
         <Row>
           <Col>
             <FormLabel> First Name </FormLabel>
@@ -67,6 +84,7 @@ export default function Driver() {
             ></Form.Control>
           </Col>
         </Row>
+
         <Row>
           <Col>
             <FormLabel> Date Of Birth </FormLabel>
@@ -92,6 +110,21 @@ export default function Driver() {
 
         <Row>
           <Col>
+            <FormLabel> Street Number</FormLabel>
+            <Form.Control
+              type="text"
+              required
+              title="Street Number"
+              value={address.streetNumber}
+              onChange={(e) =>
+                setAddress((prevState) => ({
+                  ...prevState,
+                  streetNumber: e.target.value,
+                }))
+              }
+            ></Form.Control>
+          </Col>
+          <Col>
             <FormLabel> Street Name </FormLabel>
             <Form.Control
               type="text"
@@ -101,22 +134,7 @@ export default function Driver() {
               onChange={(e) =>
                 setAddress((prevState) => ({
                   ...prevState,
-                  name: e.target.value,
-                }))
-              }
-            ></Form.Control>
-          </Col>
-          <Col>
-            <FormLabel> Street Number </FormLabel>
-            <Form.Control
-              type="text"
-              required
-              title="Street Name"
-              value={address.streetName}
-              onChange={(e) =>
-                setAddress((prevState) => ({
-                  ...prevState,
-                  name: e.target.value,
+                  streetName: e.target.value,
                 }))
               }
             ></Form.Control>
@@ -137,6 +155,7 @@ export default function Driver() {
             ></Form.Control>
           </Col>
         </Row>
+
         <Row>
           <Col>
             <FormLabel> State </FormLabel>
@@ -184,6 +203,7 @@ export default function Driver() {
             ></Form.Control>
           </Col>
         </Row>
+
         <Button type="submit"> Add to the List</Button>
       </Form>
     </Container>

@@ -1,25 +1,39 @@
 import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import classes from "./LoginPage.module.css";
 //import LoginPageModule from "./LoginPageModule.css";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [validated, setValidated] = useState(false);
 
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget;
     e.preventDefault();
+    e.stopPropagation();
+
+    if (form.checkValidity() === false) {
+      setValidated(true);
+      return;
+    }
+
     //alert(`${email} , ${password}`);
-    navigate("/", {
-      state: {},
+    navigate("/landingPage", {
+      state: {
+        user: {
+          email,
+        },
+      },
     });
   };
 
   return (
     <div>
-      <Container>
-        <Form onSubmit={onSubmitHandler}>
+      <Container className={classes.container + "center"}>
+        <Form noValidate validated={validated} onSubmit={onSubmitHandler}>
           <h1>TD LOGIX</h1>
           <Form.Label>Email Address</Form.Label>
           <Form.Control
