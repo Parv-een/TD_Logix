@@ -1,8 +1,17 @@
 import { useState } from "react";
-import Address from "../../models/Address";
-import { Button, Col, Container, Form, FormLabel, Row } from "react-bootstrap";
+import Address from "../models/Address";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  FormLabel,
+  Nav,
+  Row,
+} from "react-bootstrap";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
-export default function Driver() {
+export default function AddDriver() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   //   const [status, setStatus] = useState("");
@@ -35,6 +44,11 @@ export default function Driver() {
   return (
     <Container>
       <Form>
+        <Nav.Link href="/driver">
+          <Nav.Link href="/driver">
+            <RiArrowGoBackLine /> Go Back
+          </Nav.Link>
+        </Nav.Link>
         <h3> Add New Members</h3>
         <Row>
           <Col>

@@ -3,5 +3,9 @@
 export default function LandingPage() {
   //   const { state } = useLocation();
 
-  return <div>Hello </div>;
+  return (
+    <>
+      <h2> Welcome Back ! </h2>
+    </>
+  );
 }

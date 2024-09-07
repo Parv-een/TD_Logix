@@ -1,6 +1,5 @@
 import {
   Route,
-  Routes,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
@@ -8,9 +7,11 @@ import HomePage from "../Pages/HomePage/HomePage";
 import LoginPage from "../Pages/LoginPage/LoginPage";
 
 import Layout from "../Layout/Layout";
-import Driver from "../Pages/DriversList/Driver";
+
 import VehicleList from "../Pages/Vehicle/VehicleList";
 import LandingPage from "../Pages/LandingPage/LandingPage";
+import DriverMainPage from "../Pages/DriversList/DriverMainPage";
+import AddDriver from "../Components/AddDriver";
 
 const routes = createRoutesFromElements(
   <>
@@ -23,11 +24,12 @@ const routes = createRoutesFromElements(
       <Route index element={<LandingPage />}></Route>
     </Route>
     <Route path="/" element={<Layout />}>
-      <Route path="driver" element={<Driver />}></Route>
+      <Route path="add" element={<AddDriver />}></Route>
+      <Route path="driver" element={<DriverMainPage />}></Route>
 
       <Route path="trucks" element={<VehicleList />}></Route>
 
-      <Route path="home" element={<HomePage />}></Route>
+      <Route path="home" element={<LandingPage />}></Route>
     </Route>
   </>
 );
