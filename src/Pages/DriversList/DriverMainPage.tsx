@@ -6,7 +6,7 @@ import { useState } from "react";
 import GridList from "../../Components/GridList";
 
 export default function DriverMainPage() {
-  const [driver, setDriver] = useState<Driverlist[]>([
+  const [driver] = useState<Driverlist[]>([
     {
       id: "12345",
       firstName: "John",
@@ -15,6 +15,8 @@ export default function DriverMainPage() {
       email: "johndoe@example.com",
       phoneNumber: "1234567890",
       status: "Active",
+      image:
+        "https://img.freepik.com/premium-vector/cartoon-man-with-blue-shirt-that-says-name-man_481747-100679.jpg?w=740",
       address: [
         {
           streetName: "Main St",
@@ -34,6 +36,8 @@ export default function DriverMainPage() {
       email: "janesmith@example.com",
       phoneNumber: "9876543210",
       status: "Inactive",
+      image:
+        "https://img.freepik.com/free-photo/portrait-man-cartoon-style_23-2151134203.jpg?ga=GA1.1.918336323.1725831988&semt=ais_hybrid",
       address: [
         {
           streetName: "Elm St",
@@ -53,6 +57,8 @@ export default function DriverMainPage() {
       email: "bobjohnson@example.com",
       phoneNumber: "5551234567",
       status: "Active",
+      image:
+        "https://img.freepik.com/free-vector/gradient-avatar-illustration_52683-142441.jpg?ga=GA1.1.918336323.1725831988&semt=ais_hybrid",
       address: [
         {
           streetName: "Oak St",
@@ -72,6 +78,8 @@ export default function DriverMainPage() {
       email: "alicewilliams@example.com",
       phoneNumber: "5559012345",
       status: "Active",
+      image:
+        "https://img.freepik.com/premium-photo/man-wearing-glasses-purple-pink-background-with-picture-man-wearing-glasses_1103290-66109.jpg?ga=GA1.1.918336323.1725831988&semt=ais_hybrid",
       address: [
         {
           streetName: "Maple St",
@@ -91,6 +99,8 @@ export default function DriverMainPage() {
       email: "mikedavis@example.com",
       phoneNumber: "5554567890",
       status: "Inactive",
+      image:
+        "https://img.freepik.com/free-vector/man-wearing-eyeglasses-avatar-character_24877-83454.jpg?ga=GA1.1.918336323.1725831988&semt=ais_hybrid",
       address: [
         {
           streetName: "Pine St",
@@ -110,6 +120,8 @@ export default function DriverMainPage() {
       email: "emilytaylor@example.com",
       phoneNumber: "5551111123",
       status: "Active",
+      image:
+        "https://img.freepik.com/premium-vector/illustration-cartoon-boy-wearing-blue-jacket-with-red-hood-smiling-camera-followers-customizable-cartoon-illustration_538213-127787.jpg?ga=GA1.1.918336323.1725831988&semt=ais_hybrid",
       address: [
         {
           streetName: "Cedar St",
@@ -129,6 +141,8 @@ export default function DriverMainPage() {
       email: "sarahlee@example.com",
       phoneNumber: "5552222333",
       status: "Active",
+      image:
+        "https://img.freepik.com/premium-photo/man-with-glasses-purple-shirt-is-wearing-purple-shirt_1103290-66149.jpg?ga=GA1.1.918336323.1725831988&semt=ais_hybrid",
       address: [
         {
           streetName: "Park Ave",
@@ -148,6 +162,8 @@ export default function DriverMainPage() {
       email: "davidhall@example.com",
       phoneNumber: "5553333444",
       status: "Inactive",
+      image:
+        "https://img.freepik.com/premium-photo/animated-cartoon-man-avatar-transparent_325083-222.jpg?ga=GA1.1.918336323.1725831988&semt=ais_hybrid",
       address: [
         {
           streetName: "Lake Dr",
@@ -167,6 +183,8 @@ export default function DriverMainPage() {
       email: "oliviamartin@example.com",
       phoneNumber: "5554444555",
       status: "Active",
+      image:
+        "https://img.freepik.com/free-psd/3d-render-avatar-character_23-2150611765.jpg?ga=GA1.1.918336323.1725831988&semt=ais_hybrid",
       address: [
         {
           streetName: "River Rd",

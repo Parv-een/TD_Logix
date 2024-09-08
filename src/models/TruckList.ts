@@ -5,5 +5,6 @@ export default interface TruckList {
     model:string;
     price: number;
     status:string;
-    description?:string;
+    description?: string;
+    image: string;
 }

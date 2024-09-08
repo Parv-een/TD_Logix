@@ -10,6 +10,7 @@ export default interface Driverlist {
     phoneNumber: string;
     status?:string;
     address: Address[];
+    image : string;
 
 
     

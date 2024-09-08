@@ -18,7 +18,7 @@ export default function GridList({
   const rows = Math.ceil(items.length / (itemPerRow ?? 3));
 
   const renderFunctions = {
-    vehicle: (x) => `Model: ${x.model} , Year:${x.year}`,
+    vehicle: (x) => `Model: ${x.model} , Make:${x.make}`,
 
     driver: (x) =>
       `Name : ${x.firstName} ${x.lastName},PhoneNumber: ${x.phoneNumber}`,
@@ -38,7 +38,7 @@ export default function GridList({
             <Col key={`${rowNumber}_${i}`}>
               {renderItem(x)}
               <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={x.image} />
                 <Card.Body>
                   <Card.Title>
                     {itemType === "vehicle"
