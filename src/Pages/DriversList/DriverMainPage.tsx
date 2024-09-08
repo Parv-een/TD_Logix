@@ -187,6 +187,7 @@ export default function DriverMainPage() {
         {driver.length > 0 ? (
           <GridList
             items={driver}
+            itemType="driver"
             renderItem={(driver) => (
               <span>
                 {driver.firstName}-{driver.lastName}

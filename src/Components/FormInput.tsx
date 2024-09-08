@@ -5,10 +5,8 @@ interface FormInputProps {
   type: "text" | "email" | "password" | "date" | "number";
   required?: boolean;
   id?: string;
-  value: string | number | Date;
+  value: string | number | Date | undefined;
   placeholder?: string;
-  min?: string;
-  max?: string;
 
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage?: string;
@@ -23,8 +21,6 @@ export default function FormInput({
   onChange,
   placeholder,
   errorMessage,
-  min,
-  max,
 }: FormInputProps): JSX.Element {
   id = id ? id : title;
 
@@ -41,9 +37,8 @@ export default function FormInput({
         value={valueString}
         onChange={onChange}
         placeholder={placeholder}
-        min={min}
-        max={max}
-      />
+      ></Form.Control>
+
       <Form.Control.Feedback type="invalid">
         {required && !errorMessage ? "Required field " : errorMessage}
       </Form.Control.Feedback>
