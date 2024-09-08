@@ -4,7 +4,7 @@ import Address from "./Address";
 export default interface Driverlist {
     firstName: string;
     lastName: string;
-    id:  string;
+    id:  number;
     dateOfBirth: Date;
     email: string;
     phoneNumber: string;
