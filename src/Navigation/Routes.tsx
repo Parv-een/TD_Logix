@@ -3,17 +3,14 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-
 import LoginPage from "../Pages/LoginPage/LoginPage";
-
 import Layout from "../Layout/Layout";
-
-import VehicleList from "../Pages/Vehicle/VehicleMainPage";
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import DriverMainPage from "../Pages/DriversList/DriverMainPage";
 import AddDriver from "../Pages/DriversList/AddDriver";
 import AddVehicle from "../Pages/Vehicle/AddVehicle";
 import ItemDetailPage from "../Components/ItemDetailPage";
+import VehicleMainPage from "../Pages/Vehicle/VehicleMainPage";
 
 const routes = createRoutesFromElements(
   <>
@@ -31,7 +28,7 @@ const routes = createRoutesFromElements(
       <Route path="driver" element={<DriverMainPage />}></Route>
       <Route path="/items/:itemID" element={<ItemDetailPage />}></Route>
 
-      <Route path="trucks" element={<VehicleList />}></Route>
+      <Route path="trucks" element={<VehicleMainPage />}></Route>
 
       <Route path="home" element={<LandingPage />}></Route>
     </Route>
