@@ -10,11 +10,11 @@ import {
   Row,
 } from "react-bootstrap";
 import { RiArrowGoBackLine } from "react-icons/ri";
+import Driverlist from "../../models/DriverList";
 
 export default function AddDriver() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  //   const [status, setStatus] = useState("");
   const [id, setId] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [email, setEmail] = useState("");
@@ -41,9 +41,23 @@ export default function AddDriver() {
     setPhoneNumber(phoneNumber);
   };
 
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newDriver: Driverlist = {
+      id,
+      firstName,
+      lastName,
+      dateOfBirth: new Date(dateOfBirth),
+      email,
+      phoneNumber,
+      address: [address],
+    };
+    console.log(newDriver);
+  };
   return (
     <Container>
-      <Form>
+      <Form onSubmit={onSubmitHandler}>
         <Nav.Link href="/driver">
           <Nav.Link href="/driver">
             <RiArrowGoBackLine /> Go Back

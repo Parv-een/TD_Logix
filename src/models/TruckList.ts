@@ -1,5 +1,5 @@
 export default interface TruckList {
-    id: number;
+    id: number | string;
     name:string;
     make:string;
     model:string;
