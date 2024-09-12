@@ -13,7 +13,7 @@ export default function AddVehicle() {
     name: "",
     make: "",
     model: "",
-    price: 0,
+    price: "",
     status: "",
     description: "",
     image: "",
@@ -96,13 +96,13 @@ export default function AddVehicle() {
             <Col>
               <FormInput
                 title="Price"
-                type="number"
+                type="text"
                 required
                 value={vehicle.price}
                 onChange={(e) =>
                   setVehicle((prevState) => ({
                     ...prevState,
-                    price: +e.target.value,
+                    price: e.target.value,
                   }))
                 }
               ></FormInput>

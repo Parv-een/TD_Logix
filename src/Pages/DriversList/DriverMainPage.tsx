@@ -5,27 +5,11 @@ import { useCallback, useState } from "react";
 import classes from "./Driver.module.css";
 import GridList from "../../Components/GridList";
 import { driverDummy } from "../../DummyData/DriverDummyData";
-import Address from "../../models/Address";
+
 const PRODUCTS_PER_PAGE = 3;
 
 export default function DriverMainPage() {
-  const [driver, setDrivers] = useState(driverDummy);
-  //const [driver] = useState<Driverlist[]>([...driverDummy]);
-  const [firstName] = useState("");
-  const [lastName] = useState("");
-  const [id] = useState("");
-  const [dateOfBirth] = useState("");
-  const [email] = useState("");
-  const [phoneNumber] = useState("");
-
-  const [address] = useState<Address>({
-    streetName: " ",
-    streetNumber: "",
-    city: "",
-    state: "",
-    country: "",
-    zip: "",
-  });
+  const [driver] = useState<Driverlist[]>([...driverDummy]);
 
   const [itemOnPage, setItemOnPage] = useState<Driverlist[]>(
     driverDummy.slice(0, PRODUCTS_PER_PAGE)
@@ -52,28 +36,9 @@ export default function DriverMainPage() {
     return <ul className={classes.pagination}>{pages}</ul>;
   }, [activePage, driver]);
 
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const newDriver: Driverlist = {
-      id,
-      firstName,
-      lastName,
-      dateOfBirth: new Date(dateOfBirth),
-      email,
-      phoneNumber,
-      address: [address],
-    };
-    setDrivers((prevDrivers) => [...prevDrivers, newDriver]);
-    driverDummy.push(newDriver);
-    //console.log(newDriver);
-    //console.log(driverDummy);
-    console.log(driver);
-  };
-
   return (
     <>
-      <Form onSubmit={onSubmitHandler}>
+      <Form>
         <h3> Members List</h3>
         <Container>
           <Row>

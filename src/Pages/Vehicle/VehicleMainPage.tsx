@@ -3,7 +3,7 @@ import { vehicleDummy } from "../../DummyData/VehicleDummyData";
 import TruckList from "../../models/TruckList";
 import GridList from "../../Components/GridList";
 import { Button, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import classes from "./Vehicle.module.css";
 
 const PRODUCTS_PER_PAGE = 3;
@@ -32,33 +32,36 @@ export default function VehicleMainPage() {
         </li>
       );
     }
+
     return <ul className={classes.pagination}>{pages}</ul>;
   }, [activePage, vehicle]);
   return (
     <Container>
       <h3> Vehicle Catalogue</h3>
-      <Row>
-        {vehicle.length > 0 ? (
-          <>
-            <GridList
-              items={itemOnPage}
-              itemType="vehicle"
-              renderItem={(vehicle) => (
-                <span>
-                  {vehicle.name}-{vehicle.make}-{vehicle.model}
-                </span>
-              )}
-            />
-            {createPagination()}
-          </>
-        ) : (
-          <p> No data Found</p>
-        )}
-      </Row>
+      <Form>
+        <Row>
+          {vehicle.length > 0 ? (
+            <>
+              <GridList
+                items={itemOnPage}
+                itemType="vehicle"
+                renderItem={(vehicle) => (
+                  <span>
+                    {vehicle.name}-{vehicle.make}-{vehicle.model}
+                  </span>
+                )}
+              />
+              {createPagination()}
+            </>
+          ) : (
+            <p> No data Found</p>
+          )}
+        </Row>
 
-      <Link to="/append">
-        <Button type="submit">Add</Button>
-      </Link>
+        <Link to="/append">
+          <Button type="submit">Add</Button>
+        </Link>
+      </Form>
     </Container>
   );
 }

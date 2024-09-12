@@ -3,7 +3,7 @@ export default interface TruckList {
     name:string;
     make:string;
     model:string;
-    price: number;
+    price: string;
     status:string;
     description?: string;
     image: string;
