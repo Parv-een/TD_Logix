@@ -10,7 +10,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [validated, setValidated] = useState(false);
 
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     const form = e.currentTarget;
     e.preventDefault();
     e.stopPropagation();
