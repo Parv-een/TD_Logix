@@ -3,7 +3,7 @@ import Driverlist from "../models/DriverList";
 
 const BASE_PATH = "/driver";
 
-const itemService = {
+const itemService = useMemo( () => ({
     getAllItems: async (): Promise<Driverlist[]> => {
         const response = await httpClient.get(BASE_PATH);
         return response.data;

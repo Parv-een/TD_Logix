@@ -1,14 +1,31 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import Driverlist from "../../models/DriverList";
 import { useCallback, useState } from "react";
 import classes from "./Driver.module.css";
 import GridList from "../../Components/GridList";
 import { driverDummy } from "../../DummyData/DriverDummyData";
+import Address from "../../models/Address";
 const PRODUCTS_PER_PAGE = 3;
 
 export default function DriverMainPage() {
-  const [driver] = useState<Driverlist[]>([...driverDummy]);
+  const [driver, setDrivers] = useState(driverDummy);
+  //const [driver] = useState<Driverlist[]>([...driverDummy]);
+  const [firstName] = useState("");
+  const [lastName] = useState("");
+  const [id] = useState("");
+  const [dateOfBirth] = useState("");
+  const [email] = useState("");
+  const [phoneNumber] = useState("");
+
+  const [address] = useState<Address>({
+    streetName: " ",
+    streetNumber: "",
+    city: "",
+    state: "",
+    country: "",
+    zip: "",
+  });
 
   const [itemOnPage, setItemOnPage] = useState<Driverlist[]>(
     driverDummy.slice(0, PRODUCTS_PER_PAGE)
@@ -35,57 +52,56 @@ export default function DriverMainPage() {
     return <ul className={classes.pagination}>{pages}</ul>;
   }, [activePage, driver]);
 
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newDriver: Driverlist = {
+      id,
+      firstName,
+      lastName,
+      dateOfBirth: new Date(dateOfBirth),
+      email,
+      phoneNumber,
+      address: [address],
+    };
+    setDrivers((prevDrivers) => [...prevDrivers, newDriver]);
+    driverDummy.push(newDriver);
+    //console.log(newDriver);
+    //console.log(driverDummy);
+    console.log(driver);
+  };
+
   return (
     <>
-      <h3> Members List</h3>
-      <Container>
-        <Row>
-          {driver.length > 0 ? (
-            <>
-              <GridList
-                items={itemOnPage}
-                itemType="driver"
-                renderItem={(driver) => (
-                  <span>
-                    {driver.firstName}-{driver.lastName}
-                  </span>
-                )}
-              />
-              {createPagination()}
-            </>
-          ) : (
-            <p> No Product Found</p>
-          )}
-        </Row>
-      </Container>
+      <Form onSubmit={onSubmitHandler}>
+        <h3> Members List</h3>
+        <Container>
+          <Row>
+            {driver.length > 0 ? (
+              <>
+                <GridList
+                  items={itemOnPage}
+                  itemType="driver"
+                  renderItem={(driver) => (
+                    <span>
+                      {driver.firstName}-{driver.lastName}
+                    </span>
+                  )}
+                />
+                {createPagination()}
+              </>
+            ) : (
+              <p> No Product Found</p>
+            )}
+          </Row>
+        </Container>
 
-      <Col></Col>
-      {/* <div>
-        <ul>
-          {driver.map((driver) => (
-            <li key={driver.id}>
-              <p>Id: {driver.id}</p>
-              <p>
-                Name: {driver.firstName} {driver.lastName}
-              </p>
-              <p>Date of Birth: {driver.dateOfBirth.toLocaleDateString()}</p>s
-              <p>Email: {driver.email}</p>
-              <p>Phone Number: {driver.phoneNumber}</p>
-              {driver.address.map((address, index) => (
-                <p key={index}>
-                  Address: {address.streetNumber} {address.streetName},{" "}
-                  {address.city}, {address.state} {address.zip},{" "}
-                  {address.country}
-                </p>
-              ))}
-            </li>
-          ))}
-        </ul>
-      </div> */}
+        <Col></Col>
 
-      <Link to="/add">
-        <Button type="submit">Add Members</Button>
-      </Link>
+        <Link to="/add">
+          <Button type="submit">Add Members</Button>
+        </Link>
+      </Form>
     </>
   );
 }
