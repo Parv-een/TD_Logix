@@ -4,6 +4,8 @@ import DriverList from "../models/DriverList";
 import TruckList from "../models/TruckList";
 import { vehicleDummy } from "../DummyData/VehicleDummyData";
 import { driverDummy } from "../DummyData/DriverDummyData";
+import { Nav } from "react-bootstrap";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 export default function ItemDetailPage() {
   const { itemId } = useParams();
@@ -16,11 +18,10 @@ export default function ItemDetailPage() {
     console.log("itemId:", itemId);
     console.log("typeof itemId:", typeof itemId);
     if (itemId) {
-      const itemIdAsNumber = parseInt(itemId, 10);
-      console.log("itemIdAsNumber:", itemIdAsNumber);
-      const foundItem = [...vehicleDummy, ...driverDummy].find(
-        (x) => x.id === itemIdAsNumber
-      );
+      const foundItem = [...vehicleDummy, ...driverDummy].find((x) => {
+        const itemIdAsNumber = parseInt(itemId, 10);
+        return x.id === itemIdAsNumber || x.id.toString() === itemId;
+      });
       console.log("foundItem:", foundItem);
       if (foundItem) {
         setItem(foundItem);
@@ -41,16 +42,45 @@ export default function ItemDetailPage() {
       <h3> {item.id}</h3>
       {"firstName" in item ? (
         <div>
-          <p> Driver Name: {item.firstName}</p>
-          <p> Driver Email: {item.email}</p>
-          <p> Driver Phone: {item.phoneNumber}</p>
-          {/* Add more properties here */}
+          <p>
+            Name: {item.firstName}-{item.lastName}
+          </p>
+          <p> Email: {item.email}</p>
+          <p> PhoneNumber: {item.phoneNumber}</p>
+          <p> Date Of Birth: {item.dateOfBirth.toLocaleDateString()}</p>
+          <p>
+            Address:{" "}
+            {item.address.map((address, index) => (
+              <p key={index}>
+                Street Name: {address.streetName}
+                <br></br>
+                Street Number: {address.streetNumber}
+                <br></br>City: {address.city}
+                <br></br>
+                State: {address.state}
+                <br></br>
+                Zip: {address.zip} <br></br>
+                Country: {address.country}
+              </p>
+            ))}
+          </p>
+          <p>Status: {item.status}</p>
+          <Nav.Link href="/driver">
+            <RiArrowGoBackLine /> <b>Go Back</b>
+          </Nav.Link>
         </div>
       ) : (
         <div>
+          <p>Vehicle ID: {item.id}</p>
+          <p>Vehicle Name: {item.name}</p>
           <p>Vehicle Make: {item.make}</p>
           <p>Vehicle Model: {item.model}</p>
-          {/* Add more properties here */}
+          <p>Vehicle Price: {item.price}</p>
+          <p>Vehicle Status: {item.status}</p>
+          <p>Vehicle Description: {item.description}</p>
+          <Nav.Link href="/trucks">
+            <RiArrowGoBackLine /> <b>Go Back</b>
+          </Nav.Link>
         </div>
       )}
     </>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 interface GridProps {
   items: any;
+
   itemPerRow?: number;
   itemType: "vehicle" | "driver";
   renderItem: (items: any) => JSX.Element;

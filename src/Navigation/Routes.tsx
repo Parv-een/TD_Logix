@@ -26,7 +26,8 @@ const routes = createRoutesFromElements(
       <Route path="add" element={<AddDriver />}></Route>
       <Route path="append" element={<AddVehicle />}></Route>
       <Route path="driver" element={<DriverMainPage />}></Route>
-      <Route path="/items/:itemID" element={<ItemDetailPage />}></Route>
+      <Route path="/items/:itemId" element={<ItemDetailPage />}></Route>
+      <Route path="trucks/:vehicleId" element={<VehicleMainPage />}></Route>
 
       <Route path="trucks" element={<VehicleMainPage />}></Route>
 

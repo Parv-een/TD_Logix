@@ -1,4 +1,36 @@
-.pagination{
+
+
+
+.Container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    margin-top: 0;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .Row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  
+  
+  
+  
+  .GridList > *:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .pagination{
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -6,3 +38,24 @@
     flex-wrap:wrap;
     justify-content:center;
 }
+  .pagination > li {
+    margin: 0 10px;
+  }
+  
+  .pagination > li.active {
+    font-weight: bold;
+    color: #337ab7;
+  }
+  
+  .Button[type="submit"] {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .Button[type="submit"]:hover {
+    background-color: #23527c;
+  }

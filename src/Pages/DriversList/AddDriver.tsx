@@ -59,9 +59,7 @@ export default function AddDriver() {
     <Container>
       <Form onSubmit={onSubmitHandler}>
         <Nav.Link href="/driver">
-          <Nav.Link href="/driver">
-            <RiArrowGoBackLine /> Go Back
-          </Nav.Link>
+          <RiArrowGoBackLine /> Go Back
         </Nav.Link>
         <h3> Add New Members</h3>
         <Row>

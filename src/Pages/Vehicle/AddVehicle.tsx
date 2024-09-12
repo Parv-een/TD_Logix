@@ -3,26 +3,50 @@ import FormInput from "../../Components/FormInput";
 import { useState } from "react";
 import TruckList from "../../models/TruckList";
 import { RiArrowGoBackLine } from "react-icons/ri";
+import { vehicleDummy } from "../../DummyData/VehicleDummyData";
+import { useNavigate } from "react-router-dom";
 
 export default function AddVehicle() {
+  const navigate = useNavigate();
   const [vehicle, setVehicle] = useState<TruckList>({
+    id: "",
     name: "",
     make: "",
     model: "",
     price: 0,
     status: "",
     description: "",
+    image: "",
   });
+
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const newVehicle: TruckList = {
+      id: String(vehicleDummy.length + 1),
+      name: vehicle.name,
+      make: vehicle.make,
+      model: vehicle.model,
+      price: vehicle.price,
+      status: vehicle.status,
+      image: vehicle.image,
+      description: vehicle.description,
+    };
+    vehicleDummy.push(newVehicle);
+
+    navigate(`trucks/${newVehicle.id}`, { replace: true });
+  };
   return (
     <>
       <Container>
-        <Nav.Link href="/trucks">
+        <Form onSubmit={onSubmitHandler}>
           <Nav.Link href="/trucks">
             <RiArrowGoBackLine /> Go Back
           </Nav.Link>
-        </Nav.Link>
-        <h3> Add Vehicle</h3>
-        <Form>
+
+          <h3> Add Vehicle</h3>
+
           <Row>
             <Col>
               <FormInput
@@ -112,8 +136,9 @@ export default function AddVehicle() {
               }
             ></FormInput>
           </Row>
+
+          <Button type="submit"> Add to the list </Button>
         </Form>
-        <Button type="submit">Add to the list</Button>
       </Container>
     </>
   );
