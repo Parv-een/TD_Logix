@@ -3,7 +3,7 @@ import FormInput from "../../Components/FormInput";
 import { useState } from "react";
 import TruckList from "../../models/TruckList";
 import { RiArrowGoBackLine } from "react-icons/ri";
-import { vehicleDummy } from "../../DummyData/VehicleDummyData";
+import { addVehicle, vehicleDummy } from "../../DummyData/VehicleDummyData";
 import { useNavigate } from "react-router-dom";
 
 export default function AddVehicle() {
@@ -33,7 +33,9 @@ export default function AddVehicle() {
       image: vehicle.image,
       description: vehicle.description,
     };
+    addVehicle(newVehicle);
     vehicleDummy.push(newVehicle);
+    console.log(vehicleDummy);
 
     navigate(`trucks/${newVehicle.id}`, { replace: true });
   };
